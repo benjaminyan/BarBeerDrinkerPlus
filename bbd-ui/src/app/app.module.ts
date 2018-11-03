@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
@@ -11,6 +10,9 @@ import { SQLQueryComponent } from './sqlquery/sqlquery.component';
 import { DrinkerListComponent } from './drinker-list/drinker-list.component';
 import { BarListComponent } from './bar-list/bar-list.component';
 import { BeerListComponent } from './beer-list/beer-list.component';
+import { TableModule } from 'primeng/table';
+import {ChartModule} from 'primeng/primeng';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,13 @@ import { BeerListComponent } from './beer-list/beer-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TableModule,
+    ChartModule,
+    ButtonModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

@@ -1,0 +1,35 @@
+.wideInput {
+    text-align: left;
+    padding-left:0;
+    padding-top:0;
+    padding-bottom:0.4em;
+    padding-right: 0.4em;
+    width: 765px;
+    height: 500px;
+    border:outset 4px orange;
+}
+.outputStatus{
+    text-align: left;
+    width: 765px;
+    border:outset 4px orange;
+}
+.outputResults{
+    text-align: left;
+    padding-left:0;
+    padding-top:0;
+    padding-bottom:0.4em;
+    padding-right: 0.4em;
+    width: 765px;
+    height: 661.8px;
+    border:outset 4px orange;
+}
+.runButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+}
+.padding-0{
+    padding-right:0;
+    padding-left:0;
+}

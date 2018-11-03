@@ -1,3 +1,27 @@
-<p>
-  drinker-list works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <p-table [value] = "drinkerList"  [paginator]="true" [rows]="18">
+        <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let col of columns">
+                  {{col.header}}
+                </th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-drinker>
+            <tr style="height:30px">
+                <td *ngFor='let col of columns'>
+                  {{drinker[col.field]}}
+                </td>
+                <td><a class="fa fa-signal"></a></td>
+            </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="col">
+        <p-chart type="bar" [data]="data"></p-chart>
+    </div>
+  </div>
+</div>
