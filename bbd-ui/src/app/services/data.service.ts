@@ -25,4 +25,12 @@ export class DataService {
   getDrinkers(): Observable<Drinker[]> {
     return this.http.get<Drinker[]>(this.base + 'drinkers/all');
   }
+
+  getBeers(): Observable<Beer[]> {
+    return this.http.get<Beer[]>(this.base + 'beers/all');
+  }
+
+  getBars(): Observable<Bar[]> {
+    return this.http.get<Bar[]>(this.base + 'bars/all');
+  }
 }
