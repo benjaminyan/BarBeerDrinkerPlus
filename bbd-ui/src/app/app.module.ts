@@ -13,6 +13,7 @@ import { BeerListComponent } from './beer-list/beer-list.component';
 import { TableModule } from 'primeng/table';
 import {ChartModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/button';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {ButtonModule} from 'primeng/button';
     AppRoutingModule,
     TableModule,
     ChartModule,
-    ButtonModule
+    ButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
