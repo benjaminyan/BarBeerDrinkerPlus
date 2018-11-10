@@ -16,11 +16,11 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-drinker>
-            <tr style="height:30px">
+            <tr style="height:30px" class='clickable-row' [routerLink] = "['/drinkers/',drinker.name]">
                 <td *ngFor='let col of columns'>
                   {{drinker[col.field]}}
                 </td>
-                <td><i class="fa fa-signal"></i></td>
+                <td><Button>SG</Button></td>
             </tr>
         </ng-template>
       </p-table>

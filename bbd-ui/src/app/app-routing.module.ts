@@ -9,6 +9,7 @@ import { SQLQueryComponent } from './sqlquery/sqlquery.component';
 import { DrinkerListComponent } from './drinker-list/drinker-list.component';
 import { BarListComponent } from './bar-list/bar-list.component';
 import { BeerListComponent } from './beer-list/beer-list.component';
+import { BarAddTransactionComponent } from './baraddtransaction/baraddtransaction.component';
 
 const routes: Routes = [
   { path: 'home',                component: LandingComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'bars',              component: BarListComponent},
   { path: 'drinkers',              component: DrinkerListComponent},
   { path: 'beers/:name',      component: BeerComponent },
-  { path: 'bars/:name ',      component: BarComponent },
+  { path: 'bars/:name',      component: BarComponent },
+  { path: 'bars/:name/addtransaction', component: BarAddTransactionComponent },
   { path : 'drinkers/:name', component: DrinkerComponent},
   { path : 'sql', component: SQLQueryComponent},
   { path: '',

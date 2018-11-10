@@ -1,4 +1,4 @@
-<p-table [value] = "beerList"  [paginator]="true" [rows]="18">
+<p-table [value] = "beerList"  [paginator]="true" [rows]="18" [rowHover]="true">
   <ng-template pTemplate="header">
       <tr>
           <th *ngFor="let col of columns">
@@ -7,7 +7,7 @@
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-beer>
-      <tr style="height:30px">
+      <tr style="height:30px" class='clickable-row' [routerLink] = "['/beers/',beer.name]">
           <td *ngFor='let col of columns'>
             {{beer[col.field]}}
           </td>

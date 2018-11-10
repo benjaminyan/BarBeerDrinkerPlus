@@ -14,6 +14,7 @@ import { TableModule } from 'primeng/table';
 import {ChartModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
+import { BarAddTransactionComponent } from './baraddtransaction/baraddtransaction.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     SQLQueryComponent,
     DrinkerListComponent,
     BarListComponent,
-    BeerListComponent
+    BeerListComponent,
+    BarAddTransactionComponent
   ],
   imports: [
     BrowserModule,
