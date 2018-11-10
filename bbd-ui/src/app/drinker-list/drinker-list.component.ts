@@ -20,12 +20,12 @@ export class DrinkerListComponent implements OnInit {
 
   ngOnInit() {
     this.columns = [
-      {header: 'Name', field: 'name'},
-      {header: 'Address', field: 'addr'},
-      {header: 'City', field: 'city'},
-      {header: 'State', field: 'state'},
-      {header: 'Zip', field: 'zip'},
-      {header: 'Phone', field: 'phone'},
+      {header: 'Name', field: 'name', width: '20'},
+      {header: 'Address', field: 'addr', width: '20'},
+      {header: 'City', field: 'city', width: '15'},
+      {header: 'State', field: 'state', width: '13'},
+      {header: 'Zip', field: 'zip', width: '10'},
+      {header: 'Phone', field: 'phone', width: '18'},
     ];
 
     this.dataService.getDrinkers().subscribe((data: Drinker[]) => {

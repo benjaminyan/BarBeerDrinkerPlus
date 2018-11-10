@@ -1,10 +1,15 @@
 <div class="container-fluid">
+  
+  <div class="row mb-3">
+    <div class="col"><h2>Drinkers</h2></div>
+  </div>
+
   <div class="row">
     <div class="col">
-      <p-table [value] = "drinkerList"  [paginator]="true" [rows]="18">
+      <p-table [value] = "drinkerList"  [paginator]="true" [rows]="18" [rowHover]="true">
         <ng-template pTemplate="header">
             <tr>
-                <th *ngFor="let col of columns">
+                <th *ngFor="let col of columns" [style.width.%]="col.width"> <!-- specifying the width of columns -->
                   {{col.header}}
                 </th>
                 <th></th>
@@ -15,7 +20,7 @@
                 <td *ngFor='let col of columns'>
                   {{drinker[col.field]}}
                 </td>
-                <td><a class="fa fa-signal"></a></td>
+                <td><i class="fa fa-signal"></i></td>
             </tr>
         </ng-template>
       </p-table>
