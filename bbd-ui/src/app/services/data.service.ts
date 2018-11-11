@@ -8,8 +8,14 @@ import { Hours } from '../model/hours';
 import { Includes, Sells, Likes, Frequents } from '../model/relations';
 
 import { Settings } from '../config/settings';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+
+export class BarAndTotalSpent {
+  constructor(private bar: string, private total: number) { }
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +38,18 @@ export class DataService {
 
   getBars(): Observable<Bar[]> {
     return this.http.get<Bar[]>(this.base + 'bars/all');
+  }
+
+  getTopBarsPerDrinkerBetween(drinker: string, begin: string, end: string) {
+    // begin, end has the form yyyy-mm-dd
+
+    const parameters: HttpParams = new HttpParams()
+    .set('drinker', drinker)
+    .set('begin', begin)
+    .set('end', end);
+    const options = {params: parameters};
+    console.log(options);
+
+    return this.http.get<BarAndTotalSpent[]>(this.base + 'drinkers/topbarsperdrinker', options);
   }
 }

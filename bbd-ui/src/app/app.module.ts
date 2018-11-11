@@ -11,10 +11,12 @@ import { DrinkerListComponent } from './drinker-list/drinker-list.component';
 import { BarListComponent } from './bar-list/bar-list.component';
 import { BeerListComponent } from './beer-list/beer-list.component';
 import { TableModule } from 'primeng/table';
-import {ChartModule} from 'primeng/primeng';
+import {ChartModule, Calendar} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
 import { BarAddTransactionComponent } from './baraddtransaction/baraddtransaction.component';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { BarAddTransactionComponent } from './baraddtransaction/baraddtransactio
     TableModule,
     ChartModule,
     ButtonModule,
-    HttpClientModule
+    CalendarModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
