@@ -23,11 +23,11 @@ export class DrinkerListComponent implements OnInit {
   public selectedDrinker: string;
   public minDate = new Date('2018-01-01');
   public maxDate = new Date('2019-03-19');
-  public begin = new Date();
-  public end  = new Date();
+  public begin = new Date('2018-01-01');
+  public end  = new Date('2018-04-02');
 
   public chartData1;
-  public chartData2: BarAndTotalSpent[];
+  public chartData2: any;
 
 
   constructor(private dataService: DataService) { }
@@ -48,25 +48,5 @@ export class DrinkerListComponent implements OnInit {
     });
   }
 
-  selectDrinker(drinkerName: string) {
-    this.selectedDrinker = drinkerName;
-    this.selected = true;
-
-    // query for this drinker's bar graphs
-    this.runQuery();
-
-  }
-
-  runQuery() {
-
-    console.log(this.begin);
-    console.log(this.end);
-
-    const beginString = moment(this.begin).format('YYYY-MM-DD');
-    const endString = moment(this.end).format('YYYY-MM-DD');
-    const obs = this.dataService.getTopBarsPerDrinkerBetween(this.selectedDrinker, beginString, endString);
-
-    obs.subscribe((data: BarAndTotalSpent[]) => this.chartData2 = data);
-  }
 
 }

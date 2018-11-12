@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BarAddTransactionComponent } from './baraddtransaction/baraddtransaction.component';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DrinkerGraphComponent } from './drinkergraph/drinkergraph.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DrinkerListComponent,
     BarListComponent,
     BeerListComponent,
+    DrinkerGraphComponent,
     BarAddTransactionComponent
   ],
   imports: [

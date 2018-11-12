@@ -1,70 +1,33 @@
 <div class="container-fluid">
-  
-  <div class="row mb-3">
-    <div class="col"><h2>Drinkers</h2></div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <p-table [value] = "drinkerList"  [paginator]="true" [rows]="18" [rowHover]="true">
-        <ng-template pTemplate="header">
-            <tr>
-                <th *ngFor="let col of columns" [style.width.%]="col.width"> <!-- specifying the width of columns -->
-                  {{col.header}}
-                </th>
-                <th></th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-drinker>
-            <tr style="height:30px" class='clickable-row' (click) = "selectDrinker(drinker.name)"> <!-- [routerLink] = "['/drinkers/',drinker.name]"> -->
-                <td *ngFor='let col of columns'>
-                  <ng-container *ngIf="col.field == 'name'">
-                    <a [routerLink] = "['/drinkers/', drinker.name]">{{drinker[col.field]}}</a>
-                  </ng-container>
-                  <ng-container *ngIf="col.field !== 'name'">
-                      {{drinker[col.field]}}
-                    </ng-container>
-                  
-                </td>
-                <td></td>
-            </tr>
-        </ng-template>
-      </p-table>
-    </div>
-    <div class="col">
-
-        <div *ngIf="!selected">
-          <h3>Select a drinker by clicking the chart icon in the table.</h3>
-        </div>
-
-        <div *ngIf="selected">
-          <h3>Top 5 Beers for {{selectedDrinker}}</h3>
-          <p-chart type="bar" [data]="chartData1"></p-chart>
-
-          <form (ngSubmit)="runQuery()">
-          <p>Start date</p>
-          <p-calendar [(ngModel)]="begin" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
-          <br>
-          
-          <p>End date</p>
-          <p-calendar [(ngModel)]="end" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
-
-          <br>
-          <input class="btn" type="submit" text="Run Query">
-          </form>
-
-          <h3>Top 5 Bars at which {{selectedDrinker}} spent the most</h3>
-          <p-chart type="bar" [data]="chartData2"></p-chart>
-
-        
-          <br>
-          {{begin}}
-
-          <br>
-          {{end}}
-
-        </div>
-
+  <div class="card">
+    <h5 class="card-header">Instructions</h5>
+    <div class="card-body">
+      <p class="card-text">To view bar graphs for a particular drinker, click on that drinker's row. To view 
+        a particular drinker's transactions, click on that drinker's name.
+      </p>
     </div>
   </div>
+  <br>
+  <p-table [value] = "drinkerList"  [paginator]="true" [rows]="18" [rowHover]="true">
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let col of columns" [style.width.%]="col.width"> <!-- specifying the width of columns -->
+              {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-drinker>
+        <tr style="height:30px" class='clickable-row' [routerLink] = "['/drinkers/drinkergraph/', drinker.name]"> <!-- [routerLink] = "['/drinkers/',drinker.name]"> -->
+            <td *ngFor='let col of columns'>
+              <ng-container *ngIf="col.field == 'name'">
+                <a [routerLink] = "['/drinkers/', drinker.name]">{{drinker[col.field]}}</a>
+              </ng-container>
+              <ng-container *ngIf="col.field !== 'name'">
+                  {{drinker[col.field]}}
+                </ng-container>
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
 </div>
+    

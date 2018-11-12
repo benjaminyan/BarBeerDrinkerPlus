@@ -13,7 +13,12 @@ import { Observable } from 'rxjs';
 
 
 export class BarAndTotalSpent {
-  constructor(private bar: string, private total: number) { }
+  barName: string;
+  totalAmount: number;
+  constructor(private bar: string, private total: number) { 
+    this.barName = bar;
+    this.totalAmount = total;
+  }
 }
 
 
@@ -25,7 +30,6 @@ export class DataService {
   base: string;
   constructor(private http: HttpClient) {
     this.base = Settings.baseUrl;
-
   }
 
   getDrinkers(): Observable<Drinker[]> {
@@ -48,7 +52,6 @@ export class DataService {
     .set('begin', begin)
     .set('end', end);
     const options = {params: parameters};
-    console.log(options);
 
     return this.http.get<BarAndTotalSpent[]>(this.base + 'drinkers/topbarsperdrinker', options);
   }

@@ -10,12 +10,14 @@ import { DrinkerListComponent } from './drinker-list/drinker-list.component';
 import { BarListComponent } from './bar-list/bar-list.component';
 import { BeerListComponent } from './beer-list/beer-list.component';
 import { BarAddTransactionComponent } from './baraddtransaction/baraddtransaction.component';
+import { DrinkerGraphComponent } from './drinkergraph/drinkergraph.component';
 
 const routes: Routes = [
   { path: 'home',                component: LandingComponent },
   { path: 'beers',              component: BeerListComponent},
   { path: 'bars',              component: BarListComponent},
   { path: 'drinkers',              component: DrinkerListComponent},
+  { path: 'drinkers/drinkergraph/:drinker', component: DrinkerGraphComponent},
   { path: 'beers/:name',      component: BeerComponent },
   { path: 'bars/:name',      component: BarComponent },
   { path: 'bars/:name/addtransaction', component: BarAddTransactionComponent },
