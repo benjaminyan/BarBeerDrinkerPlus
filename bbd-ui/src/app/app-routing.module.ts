@@ -23,6 +23,10 @@ const routes: Routes = [
   { path: 'bars/:name/addtransaction', component: BarAddTransactionComponent },
   { path : 'drinkers/:name', component: DrinkerComponent},
   { path : 'sql', component: SQLQueryComponent},
+  { path: '#',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full'
