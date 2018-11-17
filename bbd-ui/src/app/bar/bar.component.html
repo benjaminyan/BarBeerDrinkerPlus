@@ -9,10 +9,24 @@
   </div>
 </div>
 <p class="text-center"><b>Top 5 Drinkers who are the Largest Spenders</b></p>
-<p-chart type="bar" [data]="chartData2"></p-chart>
+<p-chart type="bar" [data]="chartData1"></p-chart>
 <p class="text-center"><b>Top 5 Beers which are Most Popular</b></p>
 <p-chart type="bar"></p-chart>
 <p class="text-center"><b>Top 5 Manufacturers who sell the Most Beers</b></p>
 <p-chart type="bar"></p-chart>
+<p>Start date</p>
+<p-calendar [(ngModel)]="begin" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
+<br>
+
+<p>End date</p>
+<p-calendar [(ngModel)]="end" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
+
+<br>
+<Button class="btn" type="submit">Run Query</Button>
+<br>
+{{begin}}
+
+<br>
+{{end}}
 <p class="text-center"><b>Time Distribution of Sales on Average</b></p>
-<p-chart type="line"></p-chart>
+<p-chart type="line" [data]="chartData4"></p-chart>

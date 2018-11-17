@@ -30,6 +30,13 @@ export class DrinkerAndTotalSpent {
   }
 }
 
+export class TimeDistObject {
+  totalAmount: number;
+  constructor(private total: number) {
+    this.totalAmount = total;
+  }
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -72,5 +79,14 @@ export class DataService {
     const options = {params: parameters};
 
     return this.http.get<DrinkerAndTotalSpent[]>(this.base + 'bars/topdrinkersperbar', options);
+  }
+  getAvgSalesPerBar(bar: string, begin: string, end: string) {
+    const parameters: HttpParams = new HttpParams()
+    .set('bar', bar)
+    .set('begin', begin)
+    .set('end', end);
+    const options = {params: parameters};
+
+    return this.http.get<DrinkerAndTotalSpent[]>(this.base + 'bars/timedistsales', options);
   }
 }

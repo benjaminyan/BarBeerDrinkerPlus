@@ -18,6 +18,8 @@ import { BarAddTransactionComponent } from './baraddtransaction/baraddtransactio
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DrinkerGraphComponent } from './drinkergraph/drinkergraph.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { DrinkerGraphComponent } from './drinkergraph/drinkergraph.component';
     ButtonModule,
     CalendarModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
