@@ -37,6 +37,18 @@ export class TimeDistObject {
   }
 }
 
+export class BarBundle {
+  barBundleName: string;
+  barBundleSold: number;
+  constructor(private barName: string, private amountSold: number) {
+    this.barBundleName = barName;
+    this.barBundleSold = amountSold;
+  }
+}
+interface Map {
+  [index: string]: number;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -87,6 +99,14 @@ export class DataService {
     .set('end', end);
     const options = {params: parameters};
 
-    return this.http.get<DrinkerAndTotalSpent[]>(this.base + 'bars/timedistsales', options);
+    return this.http.get<Map>(this.base + 'bars/timedistsales', options);
+  }
+
+  getTopFiveBars(beer: string) {
+    const parameters: HttpParams = new HttpParams()
+    .set('beerName', beer);
+    const options = {params: parameters};
+
+    return this.http.get<BarBundle>(this.base + 'beers/topFiveBars', options);
   }
 }

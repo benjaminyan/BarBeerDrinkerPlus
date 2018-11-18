@@ -69,12 +69,11 @@ export class BarComponent implements OnInit {
     const endString = moment(this.end).format('YYYY-MM-DD');
     const obs2 = this.dataService.getAvgSalesPerBar(this.barName, beginString, endString);
     obs2.subscribe((data: any) => {this.chartData4 = data;
-      let labels0 = ['09:00:00 - 12:00:00', '12:00:00 - 18:00:00', '18:00:00 - 23:59:59', '00:00:00 - 03:00:00'];
-      let dataset0 = [];
+      let labels0 = Object.keys(data);
       let i = 0;
-      for (i = 0; i < data.length; i++) {
-        dataset0.push(data[i]['total']);
-      }
+      let dataset0 = [];
+      for (i = 0; i < labels0.length; i++) {
+        dataset0[i] = data[labels0[i]]; }
       this.chartData4 = {
       labels: labels0,
       datasets: [
@@ -82,7 +81,8 @@ export class BarComponent implements OnInit {
               label: 'Average time distribution of Sales at ' + this.barName,
               backgroundColor: '#42A5F5',
               borderColor: '#1E88E5',
-              data: dataset0
+              data: dataset0,
+              fill: false
           }
       ]
       };
