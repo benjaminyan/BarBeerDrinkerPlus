@@ -1,7 +1,7 @@
 <h1 class="text-center">{{beerName}}</h1>
 <p class="text-center"><b>Top 5 Bars where this beer sells the most</b></p>
-<p-chart type="bar"></p-chart>
+<p-chart type="bar" [data]="chartData1"></p-chart>
 <p class="text-center"><b>Top 5 Consumers of this beer</b></p>
-<p-chart type="bar"></p-chart>
+<p-chart type="bar" [data]="chartData2" [options]="chartOptions"></p-chart>
 <p class="text-center"><b>Time Distribution of when this beer sells the most</b></p>
 <p-chart type="line"></p-chart>
