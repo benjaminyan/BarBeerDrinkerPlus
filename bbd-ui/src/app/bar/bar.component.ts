@@ -23,6 +23,16 @@ export class BarComponent implements OnInit {
   public chartData2: any;
   public chartData3: any;
   public chartData4: any;
+  public chartOptions = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          stepSize: 50,
+          beginAtZero: true
+        }
+      }]
+    }
+  }
   constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) {
 
   }
@@ -79,7 +89,7 @@ export class BarComponent implements OnInit {
       labels: labels0,
       datasets: [
           {
-              label: 'Top 5 drinkers who spend the most at ' + this.barName,
+              label: 'Top 5 beers which are most popular at ' + this.barName,
               backgroundColor: '#42A5F5',
               borderColor: '#1E88E5',
               data: dataset0

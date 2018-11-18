@@ -10,6 +10,7 @@ import { Includes, Sells, Likes, Frequents } from '../model/relations';
 import { Settings } from '../config/settings';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NumberValueAccessor } from '@angular/forms/src/directives';
 
 
 export class BarAndTotalSpent {
@@ -64,6 +65,23 @@ export class BeerBundle {
 interface Map {
   [index: string]: number;
 }
+
+export class TransactionBundle {
+  tid: string;
+  bar: string;
+  amountPaid: string;
+  dateTime: string;
+  tip: string;
+  constructor(private tidVal: string, 
+  private barVal: string, private amountPaidVal: string, private dateTimeVal: string, private tipVal: string) {
+    this.tid = tidVal;
+    this.bar = barVal;
+    this.amountPaid = amountPaidVal;
+    this.dateTime = dateTimeVal;
+    this.tip = tipVal;
+  }
+}
+
 
 
 @Injectable({
@@ -139,4 +157,36 @@ export class DataService {
 
     return this.http.get<BeerBundle>(this.base + 'bars/topFiveBeers', options);
   }
+  getTopFiveBeersPerDrinker(drinker: string) {
+    const parameters: HttpParams = new HttpParams()
+    .set('drinker', drinker);
+    const options = {params: parameters};
+
+    return this.http.get<Map>(this.base + 'drinkers/topbeersperdrinker', options);
+  }
+  getTransactionsForDrinker(drinker: string) {
+    const parameters: HttpParams = new HttpParams()
+    .set('drinker', drinker);
+    const options = {params: parameters};
+
+    return this.http.get<TransactionBundle[]>(this.base + 'drinkers/alltransactionsfordrinker', options);
+  }
+  getAvgSalesPerBeer(beer: string, begin: string, end: string) {
+    const parameters: HttpParams = new HttpParams()
+    .set('beer', beer)
+    .set('begin', begin)
+    .set('end', end);
+    const options = {params: parameters};
+
+    return this.http.get<Map>(this.base + 'beers/timedistsales', options);
+  }
+  getAvgSalesPerBeerPerWeek(beer: string, begin: string) {
+    const parameters: HttpParams = new HttpParams()
+    .set('beer', beer)
+    .set('begin', begin);
+    const options = {params: parameters};
+
+    return this.http.get<Map>(this.base + 'beers/timedistsalesperweek', options);
+  }
+
 }

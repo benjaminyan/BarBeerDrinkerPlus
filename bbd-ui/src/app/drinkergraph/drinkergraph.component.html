@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <h3 class="text-center" >Top 5 Beers for {{selectedDrinker}}</h3>
-    <p-chart type="bar" [data]="chartData1"></p-chart>
+    <p-chart type="bar" [data]="chartData1" [options]="chartOptions"></p-chart>
 
     <p>Start date</p>
     <p-calendar [(ngModel)]="begin" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
@@ -10,7 +10,7 @@
     <p-calendar [(ngModel)]="end" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
 
     <br>
-    <Button class="btn" type="submit">Run Query</Button>
+    <Button class="btn" type="submit" (click) = "updateGraph()" >Run Query</Button>
 
     <h3 class="text-center">Top 5 Bars at which {{selectedDrinker}} spent the most</h3>
     <p-chart type="bar" [data]="chartData2"></p-chart>

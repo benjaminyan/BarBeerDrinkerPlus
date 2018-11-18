@@ -23,24 +23,27 @@ export class DrinkerGraphComponent implements OnInit {
   public begin = new Date('2018-01-01');
   public end  = new Date('2018-04-02');
 
-  public chartData1;
+  public chartData1: any;
   public chartData2: any;
-
+  public chartOptions = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          stepSize: 5,
+          beginAtZero: true
+        }
+      }]
+    }
+  }
 
   constructor(private dataService: DataService, private router: Router) { }
 
-
-  ngOnInit() {
-    let urlArr = this.router.url.split('/');
-    let tmpStr = urlArr[urlArr.length - 1 ];
-    let tmpStrArr = tmpStr.split('%20');
-    this.selectedDrinker = tmpStrArr.join(' ');
-
+  updateGraph() {
     const beginString = moment(this.begin).format('YYYY-MM-DD');
     const endString = moment(this.end).format('YYYY-MM-DD');
-    const obs = this.dataService.getTopBarsPerDrinkerBetween(this.selectedDrinker, beginString, endString);
+    const obs2 = this.dataService.getTopBarsPerDrinkerBetween(this.selectedDrinker, beginString, endString);
 
-    obs.subscribe((data: any) => {this.chartData2 = data;
+    obs2.subscribe((data: any) => {this.chartData2 = data;
         let labels0 = [];
         let dataset0 = [];
         let i = 0;
@@ -60,5 +63,36 @@ export class DrinkerGraphComponent implements OnInit {
         ]
         };
     });
+  }
+
+  ngOnInit() {
+    let urlArr = this.router.url.split('/');
+    let tmpStr = urlArr[urlArr.length - 1 ];
+    let tmpStrArr = tmpStr.split('%20');
+    this.selectedDrinker = tmpStrArr.join(' ');
+    const obs1 = this.dataService.getTopFiveBeersPerDrinker(this.selectedDrinker);
+
+    obs1.subscribe((data: any) => {this.chartData1 = data;
+      let labels0 = [];
+      let dataset0 = [];
+      let i = 0;
+      let dataArr = data['content'];
+      for (i = 0; i < dataArr.length; i++) {
+        labels0.push(dataArr[i][0]);
+        dataset0.push(dataArr[i][1]);
+      }
+      this.chartData1 = {
+      labels: labels0,
+      datasets: [
+          {
+              label: 'Top 5 bars that sell the most ' + this.selectedDrinker,
+              backgroundColor: '#42A5F5',
+              borderColor: '#1E88E5',
+              data: dataset0
+          }
+      ]
+      };
+    });
+    this.updateGraph();
   }
 }
