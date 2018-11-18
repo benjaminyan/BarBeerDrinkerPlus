@@ -19,10 +19,12 @@ export class BarComponent implements OnInit {
   public maxDate: Date;
   public begin: Date;
   public end: Date;
+  public beginWeek: Date;
   public chartData1: any;
   public chartData2: any;
   public chartData3: any;
   public chartData4: any;
+  public chartData5: any;
   public chartOptions = {
     scales: {
       yAxes: [{
@@ -44,13 +46,59 @@ export class BarComponent implements OnInit {
     d.setTime(d.getTime() + (new Date().getTimezoneOffset() * 60 * 1000));
     this.end = d;
   }
+  updateGraph() {
+    const beginString = moment(this.begin).format('YYYY-MM-DD');
+    const endString = moment(this.end).format('YYYY-MM-DD');
+    const obs4 = this.dataService.getAvgSalesPerBar(this.barName, beginString, endString);
+    obs4.subscribe((data: any) => {this.chartData4 = data;
+      let labels0 = Object.keys(data);
+      let i = 0;
+      let dataset0 = [];
+      for (i = 0; i < labels0.length; i++) {
+        dataset0[i] = data[labels0[i]]; }
+      this.chartData4 = {
+      labels: labels0,
+      datasets: [
+          {
+              label: 'Average time distribution of Sales at ' + this.barName,
+              backgroundColor: '#42A5F5',
+              borderColor: '#1E88E5',
+              data: dataset0,
+              fill: false
+          }
+      ]
+      };
+    });
+  }
+  updateGraphWeek() {
+    const beginString = moment(this.beginWeek).format('YYYY-MM-DD');
+    const obs5 = this.dataService.getAvgSalesPerBarPerWeek(this.barName, beginString);
+    obs5.subscribe((data: any) => {this.chartData5 = data;
+      let labels0 = Object.keys(data);
+      let i = 0;
+      let dataset0 = [];
+      for (i = 0; i < labels0.length; i++) {
+        dataset0[i] = data[labels0[i]]; }
+      this.chartData5 = {
+      labels: labels0,
+      datasets: [
+          {
+              label: 'Average time distribution of Sales at ' + this.barName + ' per week',
+              backgroundColor: '#42A5F5',
+              borderColor: '#1E88E5',
+              data: dataset0,
+              fill: false
+          }
+      ]
+      };
+    });
+  }
   ngOnInit() {
-    this.minDate = new Date('2018-01-01');
-    this.maxDate = new Date('2019-03-19');
-    this.begin = new Date('2018-01-01');
-    this.end  = new Date('2018-04-02');
-    this.setBeginDate(this.begin);
-    this.setEndDate(this.end);
+    this.minDate = new Date(2018, 0, 1);
+    this.maxDate = new Date(2019, 2, 19);
+    this.begin = new Date(2018, 0, 1);
+    this.end  = new Date(2018, 3, 2);
+    this.beginWeek = new Date(2018, 0, 1);
     this.id = this.route.paramMap.pipe(map((paramMap: ParamMap) => paramMap.get('name')));
     this.id.subscribe((barName) => {this.barName = barName; });
     console.log(this.barName);
@@ -119,28 +167,8 @@ export class BarComponent implements OnInit {
       ]
       };
     });
-    const beginString = moment(this.begin).format('YYYY-MM-DD');
-    const endString = moment(this.end).format('YYYY-MM-DD');
-    const obs4 = this.dataService.getAvgSalesPerBar(this.barName, beginString, endString);
-    obs4.subscribe((data: any) => {this.chartData4 = data;
-      let labels0 = Object.keys(data);
-      let i = 0;
-      let dataset0 = [];
-      for (i = 0; i < labels0.length; i++) {
-        dataset0[i] = data[labels0[i]]; }
-      this.chartData4 = {
-      labels: labels0,
-      datasets: [
-          {
-              label: 'Average time distribution of Sales at ' + this.barName,
-              backgroundColor: '#42A5F5',
-              borderColor: '#1E88E5',
-              data: dataset0,
-              fill: false
-          }
-      ]
-      };
-    });
+    this.updateGraph();
+    this.updateGraphWeek();
   }
 
 }

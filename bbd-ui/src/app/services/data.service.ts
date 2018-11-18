@@ -195,5 +195,13 @@ export class DataService {
 
     return this.http.get<Map>(this.base + 'bars/topmanfsperbar', options);
   }
+  getAvgSalesPerBarPerWeek(bar: string, beginDate: string) {
+    const parameters: HttpParams = new HttpParams()
+    .set('bar', bar)
+    .set('beginDate', beginDate);
+    const options = {params: parameters};
+
+    return this.http.get<Map>(this.base + 'bars/timedistsalesperweek', options);
+  }
 
 }

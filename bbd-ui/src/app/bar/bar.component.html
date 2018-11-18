@@ -19,11 +19,24 @@
 <p-calendar [(ngModel)]="end" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
 
 <br>
-<Button class="btn" type="submit">Run Query</Button>
+<Button class="btn" type="submit" (click) = "updateGraph()">Run Query</Button>
 <br>
 {{begin}}
 
 <br>
 {{end}}
+
 <p class="text-center"><b>Time Distribution of Sales on Average</b></p>
 <p-chart type="line" [data]="chartData4"></p-chart>
+
+<p>Start date (per week)</p>
+<p-calendar [(ngModel)]="beginWeek" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
+<br>
+
+<Button class="btn" type="submit" (click) = "updateGraphWeek()">Run Query</Button>
+
+<p class="text-center"><b>Time Distribution of sales at {{barName}} per week</b></p>
+<p-chart type="line" [data]="chartData5" ></p-chart>
+
+<br>
+{{beginWeek}}
