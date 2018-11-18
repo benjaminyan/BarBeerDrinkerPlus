@@ -53,6 +53,14 @@ export class DrinkerBundle {
     this.drinkerBundleSold = amountSold;
   }
 }
+export class BeerBundle {
+  beerBundleName: string;
+  beerBundleSold: number;
+  constructor(private barName: string, private amountSold: number) {
+    this.beerBundleName = barName;
+    this.beerBundleSold = amountSold;
+  }
+}
 interface Map {
   [index: string]: number;
 }
@@ -124,5 +132,11 @@ export class DataService {
 
     return this.http.get<DrinkerBundle>(this.base + 'beers/topFiveDrinkers', options);
   }
+  getTopFiveBeers(bar: string) {
+    const parameters: HttpParams = new HttpParams()
+    .set('barName', bar);
+    const options = {params: parameters};
 
+    return this.http.get<BeerBundle>(this.base + 'bars/topFiveBeers', options);
+  }
 }

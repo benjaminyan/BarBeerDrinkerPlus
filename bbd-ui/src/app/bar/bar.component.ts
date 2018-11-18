@@ -65,10 +65,32 @@ export class BarComponent implements OnInit {
       ]
       };
     });
+    const obs2 = this.dataService.getTopFiveBeers(this.barName);
+    obs2.subscribe((data: any) => {this.chartData2 = data;
+      let labels0 = [];
+      let dataset0 = [];
+      let i = 0;
+      let dataArr = data['content'];
+      for (i = 0; i < dataArr.length; i++) {
+        labels0.push(dataArr[i][0]);
+        dataset0.push(dataArr[i][1]);
+      }
+      this.chartData2 = {
+      labels: labels0,
+      datasets: [
+          {
+              label: 'Top 5 drinkers who spend the most at ' + this.barName,
+              backgroundColor: '#42A5F5',
+              borderColor: '#1E88E5',
+              data: dataset0
+          }
+      ]
+      };
+    });
     const beginString = moment(this.begin).format('YYYY-MM-DD');
     const endString = moment(this.end).format('YYYY-MM-DD');
-    const obs2 = this.dataService.getAvgSalesPerBar(this.barName, beginString, endString);
-    obs2.subscribe((data: any) => {this.chartData4 = data;
+    const obs4 = this.dataService.getAvgSalesPerBar(this.barName, beginString, endString);
+    obs4.subscribe((data: any) => {this.chartData4 = data;
       let labels0 = Object.keys(data);
       let i = 0;
       let dataset0 = [];
