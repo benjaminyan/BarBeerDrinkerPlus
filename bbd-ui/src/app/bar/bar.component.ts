@@ -97,6 +97,28 @@ export class BarComponent implements OnInit {
       ]
       };
     });
+    const obs3 = this.dataService.getTopFiveManfsPerBar(this.barName);
+    obs3.subscribe((data: any) => {this.chartData3 = data;
+      let labels0 = [];
+      let dataset0 = [];
+      let i = 0;
+      let dataArr = data['content'];
+      for (i = 0; i < dataArr.length; i++) {
+        labels0.push(dataArr[i][0]);
+        dataset0.push(dataArr[i][1]);
+      }
+      this.chartData3 = {
+      labels: labels0,
+      datasets: [
+          {
+              label: 'Top 5 manufacturers which sell the most beer at ' + this.barName,
+              backgroundColor: '#42A5F5',
+              borderColor: '#1E88E5',
+              data: dataset0
+          }
+      ]
+      };
+    });
     const beginString = moment(this.begin).format('YYYY-MM-DD');
     const endString = moment(this.end).format('YYYY-MM-DD');
     const obs4 = this.dataService.getAvgSalesPerBar(this.barName, beginString, endString);

@@ -14,7 +14,6 @@ import { TableModule } from 'primeng/table';
 import {ChartModule, Calendar} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
-import { BarAddTransactionComponent } from './baraddtransaction/baraddtransaction.component';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DrinkerGraphComponent } from './drinkergraph/drinkergraph.component';
@@ -33,7 +32,6 @@ import { FormsModule } from '@angular/forms';
     BarListComponent,
     BeerListComponent,
     DrinkerGraphComponent,
-    BarAddTransactionComponent
   ],
   imports: [
     BrowserModule,

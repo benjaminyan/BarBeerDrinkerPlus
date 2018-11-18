@@ -3,9 +3,6 @@
     <div class="col" style="padding: 50px; background-color: #BCC6CC;">
         <h1 class="text-center">{{barName}}</h1>
     </div>
-    <div id="add" class="col clickable-row" style="padding: 50px; background-color: #20B2AA;" [routerLink] = "['/bars/',barName,'addtransaction']">
-        <h1 class="text-center">Add Transaction</h1>
-    </div>
   </div>
 </div>
 <p class="text-center"><b>Top 5 Drinkers who are the Largest Spenders</b></p>
@@ -13,7 +10,7 @@
 <p class="text-center"><b>Top 5 Beers which are Most Popular</b></p>
 <p-chart type="bar" [data]="chartData2" [options]="chartOptions"></p-chart>
 <p class="text-center"><b>Top 5 Manufacturers who sell the Most Beers</b></p>
-<p-chart type="bar"></p-chart>
+<p-chart type="bar" [data]="chartData3"></p-chart>
 <p>Start date</p>
 <p-calendar [(ngModel)]="begin" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
 <br>

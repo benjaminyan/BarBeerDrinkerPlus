@@ -188,5 +188,12 @@ export class DataService {
 
     return this.http.get<Map>(this.base + 'beers/timedistsalesperweek', options);
   }
+  getTopFiveManfsPerBar(bar: string) {
+    const parameters: HttpParams = new HttpParams()
+    .set('bar', bar);
+    const options = {params: parameters};
+
+    return this.http.get<Map>(this.base + 'bars/topmanfsperbar', options);
+  }
 
 }
