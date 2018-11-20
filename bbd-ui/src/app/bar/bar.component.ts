@@ -32,6 +32,13 @@ export class BarComponent implements OnInit {
           stepSize: 50,
           beginAtZero: true
         }
+      }],
+      xAxes: [{
+        ticks: {
+          autoSkip: false,
+          maxRotation: 45,
+          minRotation: 0
+        }
       }]
     }
   }

@@ -94,6 +94,11 @@ export class DataService {
     this.base = Settings.baseUrl;
   }
 
+
+  getSummaryData<T>(type: string) {
+    return this.http.get<T>(this.base + type + '/summary');
+  }
+
   getDrinkers(): Observable<Drinker[]> {
     return this.http.get<Drinker[]>(this.base + 'drinkers/all');
   }
