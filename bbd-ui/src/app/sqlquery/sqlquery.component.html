@@ -1,12 +1,29 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-4">
-      <textarea class="wideInput"></textarea> 
-      <textarea readonly class="outputStatus"></textarea> 
-      <p-button class="runButton" label="Run" styleClass="ui-button-success"></p-button>
+    <div class="col-12">
+      <textarea class="wideInput" [(ngModel)] = "sqlQuery"></textarea> 
+      <textarea readonly class="outputStatus" [(ngModel)] = "errorMessage"></textarea> 
+      <p-button class="runButton" label="Run" styleClass="ui-button-success" (click) = "runClicked()"></p-button>
     </div>
-    <div class="col-4">
-      <textarea class="outputResults"></textarea> 
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p-table [value] = "rows"  [paginator]="true" [rows]="18" [rowHover]="true">
+        <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let col of columns"> <!-- specifying the width of columns -->
+                  {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-row>
+            <tr style="height:30px"> <!-- [routerLink] = "['/drinkers/',drinker.name]"> -->
+                <td *ngFor='let col of columns'>
+                  {{row[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+      </p-table>
     </div>
   </div>
 </div>

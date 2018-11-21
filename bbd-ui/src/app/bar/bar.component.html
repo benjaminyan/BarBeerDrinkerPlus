@@ -5,38 +5,51 @@
     </div>
   </div>
 </div>
-<p class="text-center"><b>Top 5 Drinkers who are the Largest Spenders</b></p>
-<p-chart type="bar" [data]="chartData1" [options] = "chartOptions"></p-chart>
-<p class="text-center"><b>Top 5 Beers which are Most Popular</b></p>
-<p-chart type="bar" [data]="chartData2" [options]="chartOptions"></p-chart>
-<p class="text-center"><b>Top 5 Manufacturers who sell the Most Beers</b></p>
-<p-chart type="bar" [data]="chartData3" [options]="chartOptions"></p-chart>
-<p>Start date</p>
-<p-calendar [(ngModel)]="begin" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
-<br>
+<div class="row">
+  <div class="col-6">
+      <p class="text-center"><b>Top 5 Drinkers who are the Largest Spenders</b></p>
+      <p-chart type="bar" [data]="chartData1" [options] = "chartOptions"></p-chart>
+  </div>
+  <div class="col-6">
+      <p class="text-center"><b>Top 5 Beers which are Most Popular</b></p>
+      <p-chart type="bar" [data]="chartData2" [options]="chartOptions"></p-chart>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+      <p class="text-center"><b>Top 5 Manufacturers who sell the Most Beers</b></p>
+      <p-chart type="bar" [data]="chartData3" [options]="chartOptions"></p-chart>
+  </div>
+  <div class="col-6">
+      <p>Start date</p>
+      <p-calendar [(ngModel)]="begin" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
+      <br>
 
-<p>End date</p>
-<p-calendar [(ngModel)]="end" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
+      <p>End date</p>
+      <p-calendar [(ngModel)]="end" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
 
-<br>
-<Button class="btn" type="submit" (click) = "updateGraph()">Run Query</Button>
-<br>
-{{begin}}
+      <br>
+      <Button class="btn" type="submit" (click) = "updateGraph()">Run Query</Button>
 
-<br>
-{{end}}
+      <p class="text-center"><b>Time Distribution of Sales on Average</b></p>
+      <p-chart type="line" [data]="chartData4" [options]="chartOptions2"></p-chart>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+      <p>Start date (per week)</p>
+      <p-calendar [(ngModel)]="beginWeek" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
+      <br>
+      
+      <Button class="btn" type="submit" (click) = "updateGraphWeek()">Run Query</Button>
+      
+      <p class="text-center"><b>Time Distribution of sales at {{barName}} per week</b></p>
+      <p-chart type="line" [data]="chartData5" [options]="chartOptions"></p-chart>
+  </div>
+</div>
 
-<p class="text-center"><b>Time Distribution of Sales on Average</b></p>
-<p-chart type="line" [data]="chartData4"></p-chart>
 
-<p>Start date (per week)</p>
-<p-calendar [(ngModel)]="beginWeek" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
-<br>
 
-<Button class="btn" type="submit" (click) = "updateGraphWeek()">Run Query</Button>
 
-<p class="text-center"><b>Time Distribution of sales at {{barName}} per week</b></p>
-<p-chart type="line" [data]="chartData5" ></p-chart>
 
-<br>
-{{beginWeek}}
+

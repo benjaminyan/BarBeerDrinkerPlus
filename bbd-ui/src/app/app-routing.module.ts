@@ -10,7 +10,6 @@ import { DrinkerListComponent } from './drinker-list/drinker-list.component';
 import { BarListComponent } from './bar-list/bar-list.component';
 import { BeerListComponent } from './beer-list/beer-list.component';
 import { DrinkerGraphComponent } from './drinkergraph/drinkergraph.component';
-import { ModificationsComponent } from './modifications/modifications.component';
 
 const routes: Routes = [
   { path: 'home',                component: LandingComponent },
@@ -22,7 +21,6 @@ const routes: Routes = [
   { path: 'bars/:name',      component: BarComponent },
   { path : 'drinkers/:name', component: DrinkerComponent},
   { path : 'sql', component: SQLQueryComponent},
-  { path: 'modifications', component: ModificationsComponent},
   { path: '#',
     redirectTo: 'home',
     pathMatch: 'full'

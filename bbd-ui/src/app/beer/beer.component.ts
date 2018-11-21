@@ -29,8 +29,66 @@ export class BeerComponent implements OnInit {
     scales: {
       yAxes: [{
         ticks: {
-          stepSize: 5,
+          stepSize: 100,
           beginAtZero: true
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          autoSkip: false,
+          maxRotation: 45,
+          minRotation: 0
+        }
+      }]
+    }
+  };
+  public chartOptions2 = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          stepSize: 25,
+          beginAtZero: true
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          autoSkip: false,
+          maxRotation: 45,
+          minRotation: 0
+        }
+      }]
+    }
+  };
+  public chartOptions3 = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          stepSize: 100,
+          beginAtZero: true
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          autoSkip: false,
+          maxRotation: 45,
+          minRotation: 0
+        }
+      }]
+    }
+  };
+  public chartOptions4 = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          stepSize: 25,
+          beginAtZero: true
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          autoSkip: false,
+          maxRotation: 45,
+          minRotation: 0
         }
       }]
     }

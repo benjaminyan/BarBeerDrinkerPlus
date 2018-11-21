@@ -82,6 +82,15 @@ export class TransactionBundle {
   }
 }
 
+export class SpendingWeek {
+  date: string;
+  amount: number;
+  constructor(private dateVal: string, private amountVal: number) {
+      this.date = dateVal;
+      this.amount = amountVal;
+    }
+}
+
 
 
 @Injectable({
@@ -207,6 +216,33 @@ export class DataService {
     const options = {params: parameters};
 
     return this.http.get<Map>(this.base + 'bars/timedistsalesperweek', options);
+  }
+
+  getResultFromQuery(query: string) {
+    const parameters: HttpParams = new HttpParams()
+    .set('query', query);
+    const options = {params: parameters};
+    const queryDict = {'query': query};
+
+    return this.http.post<Map>(this.base + 'sql/object/run', {}, options);
+  }
+
+  getDrinkerSpendingPerWeek(drinker: string, beginDate: string, endDate: string) {
+    const parameters: HttpParams = new HttpParams()
+    .set('drinker', drinker)
+    .set('beginDate', beginDate)
+    .set('endDate', endDate);
+    const options = {params: parameters};
+
+    return this.http.get<SpendingWeek[]>(this.base + 'drinkers/spendingperweek', options);
+  }
+
+  getDrinkerSpendingPerMonth(drinker: string) {
+    const parameters: HttpParams = new HttpParams()
+    .set('drinker', drinker);
+    const options = {params: parameters};
+
+    return this.http.get<SpendingWeek[]>(this.base + 'drinkers/spendingpermonth', options);
   }
 
 }

@@ -20,8 +20,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DrinkerGraphComponent } from './drinkergraph/drinkergraph.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModificationsComponent } from './modifications/modifications.component';
-import { FormsComponent } from './forms/forms.component';
 
 
 @NgModule({
@@ -36,8 +34,6 @@ import { FormsComponent } from './forms/forms.component';
     BarListComponent,
     BeerListComponent,
     DrinkerGraphComponent,
-    ModificationsComponent,
-    FormsComponent
   ],
   imports: [
     BrowserModule,
@@ -49,8 +45,8 @@ import { FormsComponent } from './forms/forms.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     DropdownModule
   ],
   providers: [],

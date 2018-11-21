@@ -42,6 +42,23 @@ export class BarComponent implements OnInit {
       }]
     }
   }
+  public chartOptions2 = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          stepSize: 500,
+          beginAtZero: true
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          autoSkip: false,
+          maxRotation: 45,
+          minRotation: 0
+        }
+      }]
+    }
+  }
   constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) {
 
   }
