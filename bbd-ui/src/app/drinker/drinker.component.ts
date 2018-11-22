@@ -9,6 +9,7 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./drinker.component.css']
 })
 export class DrinkerComponent implements OnInit {
+  public drinkerName: string;
   public transactionArr: TransactionBundle[];
   public columns;
   public dataObs: Observable<any>;
@@ -25,7 +26,10 @@ export class DrinkerComponent implements OnInit {
     ];
 
     this.dataObs = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => this.dataService.getTransactionsForDrinker(params.get('name'))
+      switchMap((params: ParamMap) => {
+        this.drinkerName = params.get('name');
+        return this.dataService.getTransactionsForDrinker(params.get('name'));
+      }
       ));
     this.dataObs.subscribe((data: any) => {
       let i = 0;

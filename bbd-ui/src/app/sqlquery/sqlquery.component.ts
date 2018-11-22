@@ -21,7 +21,7 @@ export class SQLQueryComponent implements OnInit {
       if (data['error'] !== null) {
         this.message = data['error'];
       }
-      else if (data['result'] !== null) {
+      else if (data['result'] !== null && data['result'] !== '-1 rows affected.') {
         this.message = data['result'];
       }
       else {

@@ -18,18 +18,20 @@
 <div class="row">
   <div class="col-6">
       <p class="text-center"><b>Top 5 Manufacturers who sell the Most Beers</b></p>
-      <p-chart type="bar" [data]="chartData3" [options]="chartOptions"></p-chart>
+      <p-chart type="bar" [data]="chartData3" [options]="chartOptions2"></p-chart>
   </div>
   <div class="col-6">
-      <p>Start date</p>
-      <p-calendar [(ngModel)]="begin" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
-      <br>
+      <div class="text-right leftshift">
+        <p>Start date</p>
+        <p-calendar [(ngModel)]="begin" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
+        <br>
 
-      <p>End date</p>
-      <p-calendar [(ngModel)]="end" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
+        <p>End date</p>
+        <p-calendar [(ngModel)]="end" [showIcon]="true" dateFormat="yy-mm-dd" [minDate] = "minDate" [maxDate] = "maxDate"></p-calendar>
 
-      <br>
-      <Button class="btn" type="submit" (click) = "updateGraph()">Run Query</Button>
+        <br>
+        <Button class="btn" type="submit" (click) = "updateGraph()">Run Query</Button>
+      </div>
 
       <p class="text-center"><b>Time Distribution of Sales on Average</b></p>
       <p-chart type="line" [data]="chartData4" [options]="chartOptions2"></p-chart>

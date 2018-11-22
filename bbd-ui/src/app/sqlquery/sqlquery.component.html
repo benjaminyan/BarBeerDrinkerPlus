@@ -2,8 +2,10 @@
   <div class="row">
     <div class="col-12">
       <textarea class="wideInput" [(ngModel)] = "sqlQuery"></textarea> 
-      <textarea readonly class="outputStatus" [(ngModel)] = "message"></textarea> 
-      <p-button class="runButton" label="Run" styleClass="ui-button-success" (click) = "runClicked()"></p-button>
+      <textarea readonly class="outputStatus" [(ngModel)] = "message"></textarea>
+      <div style="text-align: center;">
+        <p-button class="btn" label="Run" (click) = "runClicked()"></p-button>
+      </div>
     </div>
   </div>
   <div class="row">

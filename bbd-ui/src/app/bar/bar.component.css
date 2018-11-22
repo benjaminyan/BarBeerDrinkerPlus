@@ -1,3 +1,7 @@
 #add:hover {
     opacity: 0.8
 }
+.leftshift {
+    position: relative;
+    left: -40px;
+}
